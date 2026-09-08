@@ -15,7 +15,7 @@ import { CtaButton } from "../components/cta-button";
 export const metadata: Metadata = {
   title: "Sobre Nós e Estrutura",
   description:
-    "Conheça a metodologia, estrutura e equipe técnica da Spartan Fit em Vila Mariana.",
+    "Conheça a metodologia, estrutura e equipe técnica da Spartan Fit em Jardim Tupã.",
 };
 
 const method = [

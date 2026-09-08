@@ -32,7 +32,7 @@ const contactPoints = [
   {
     icon: MapPin,
     label: "Endereço",
-    value: "Rua Domingos de Morais, 2187 - Vila Mariana, São Paulo",
+    value: "Estr. Henrique Rosa, 555 - Jardim Tupã, São Bernardo do Campo - SP",
   },
   {
     icon: Phone,
@@ -116,7 +116,7 @@ export function ContactBoard() {
               <div className="absolute bottom-5 left-5 right-5 border border-line bg-background/78 p-5 backdrop-blur">
                 <p className="micro-label text-accent">Mapa mockup</p>
                 <h2 className="display-cut mt-3 text-5xl leading-none text-foreground">
-                  Vila Mariana / Metrô a 4 min
+                  Jardim Tupã, São Bernardo do Campo - SP
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-muted">
                   Estacionamento conveniado na Rua Vergueiro, 2 horas com desconto.

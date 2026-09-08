@@ -56,7 +56,7 @@ export function SiteFooter() {
           <div className="grid gap-4 text-sm leading-6 text-muted">
             <p className="flex gap-3">
               <MapPinned aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />
-              Rua Domingos de Morais, 2187 - Vila Mariana, São Paulo
+              Estr. Henrique Rosa, 555 - Jardim Tupã, São Bernardo do Campo - SP
             </p>
             <p className="flex gap-3">
               <Clock3 aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />

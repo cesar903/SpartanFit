@@ -20,7 +20,7 @@ const highlights = [
   {
     icon: MapPin,
     label: "Unidade central",
-    text: "Vila Mariana, a 4 minutos do metrô.",
+    text: "Jardim Tupã, a 1 min do ponto de ônibus.",
   },
   {
     icon: Clock3,
