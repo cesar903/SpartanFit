@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Spartan Fit",
   },
   description:
-    "Academia premium com musculação, cross training, lutas, spinning e avaliação técnica em ambiente climatizado.",
+    "Academia com musculação, Zumba, Fit Dance, Pilates, Boxe, Jiu-jitsu e Kickboxing em Jardim Tupã.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

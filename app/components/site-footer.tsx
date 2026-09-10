@@ -28,8 +28,8 @@ export function SiteFooter() {
             Musculação, lutas e condicionamento sem enrolação.
           </h2>
           <p className="mt-5 max-w-md text-sm leading-6 text-muted">
-            3000m² climatizados, treino acompanhado e avaliação física no primeiro
-            acesso.
+            500m² de estrutura, 40 equipamentos, 12 funcionários e modalidades
+            para treinar saúde, força e condicionamento.
           </p>
           <CtaButton href="/contato" className="mt-7">
             Marcar visita
@@ -60,7 +60,7 @@ export function SiteFooter() {
             </p>
             <p className="flex gap-3">
               <Clock3 aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />
-              Segunda a sexta, 05h às 23h. Sábado, 07h às 18h.
+              Segunda a sexta, 06h às 22h. Sábado, 09h às 12h.
             </p>
             <p className="flex gap-3">
               <Phone aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />

@@ -10,10 +10,10 @@ import {
 import { CtaButton } from "./components/cta-button";
 
 const quickStats = [
-  { label: "Área climatizada", value: "3000m²" },
-  { label: "Funcionamento", value: "05h-23h" },
-  { label: "Modalidades", value: "18+" },
-  { label: "Avaliação inicial", value: "Incluída" },
+  { label: "Área de treino", value: "500m²" },
+  { label: "Equipamentos", value: "40" },
+  { label: "Funcionários", value: "12" },
+  { label: "Seg-sex", value: "06h-22h" },
 ];
 
 const highlights = [
@@ -24,8 +24,8 @@ const highlights = [
   },
   {
     icon: Clock3,
-    label: "Grade cheia",
-    text: "Aulas coletivas de manhã, tarde e noite.",
+    label: "Horário amplo",
+    text: "Musculação de segunda a sexta, das 06h às 22h.",
   },
   {
     icon: ShieldCheck,
@@ -36,37 +36,37 @@ const highlights = [
 
 const popularClasses = [
   {
-    name: "Cross Training",
-    schedule: "Seg, qua e sex - 19h",
-    intensity: "Alta intensidade",
-    detail: "Blocos de força, cardio e técnica com limite de 16 alunos.",
+    name: "Zumba / Fit Dance",
+    schedule: "Seg e qua - 19h",
+    intensity: "Cardio ritmado",
+    detail: "Aula coletiva para condicionamento, coordenação e gasto calórico.",
     image: "/images/spartan-fit-6.jpeg",
     imagePosition: "object-center",
     size: "lg:col-span-2 lg:row-span-2",
   },
   {
-    name: "Musculação Guiada",
-    schedule: "Todos os dias",
-    intensity: "Progressão técnica",
-    detail: "Treino ajustado por avaliação, objetivo e histórico de carga.",
+    name: "Musculação",
+    schedule: "Seg a sex 06h-22h / sáb 09h-12h",
+    intensity: "40 equipamentos",
+    detail: "Estrutura de 500m² para treinar força, saúde e condicionamento.",
     image: "/images/spartan-fit-fundo.jpeg",
     imagePosition: "object-center",
     size: "",
   },
   {
-    name: "Muay Thai",
-    schedule: "Ter e qui - 20h",
-    intensity: "Contato controlado",
-    detail: "Base, clinch, saco e condicionamento específico.",
+    name: "Jiu-jitsu",
+    schedule: "Adulto ter e qui - 20h",
+    intensity: "Tatame ativo",
+    detail: "Turmas adulto e kids com horários fixos durante a semana.",
     image: "/images/spartan-fit-3.jpeg",
     imagePosition: "object-center",
     size: "",
   },
   {
-    name: "Spinning",
-    schedule: "Seg a sab",
-    intensity: "Cardio forte",
-    detail: "Sala dedicada com bikes reguladas e treino por zona.",
+    name: "Boxe e Kickboxing",
+    schedule: "Boxe ter/qui 08h; Kick seg/qua 21h",
+    intensity: "Luta e cardio",
+    detail: "Golpes, deslocamento, defesa e condicionamento em treino técnico.",
     image: "/images/spartan-fit-4.jpeg",
     imagePosition: "object-center",
     size: "",
@@ -80,9 +80,9 @@ const testimonials = [
     meta: "Aluno desde 2024",
   },
   {
-    quote: "A aula de cross tem correção real. Ninguém fica perdido no canto.",
+    quote: "As aulas têm correção real. Ninguém fica perdido no canto.",
     author: "Renata P.",
-    meta: "Cross training",
+    meta: "Lutas",
   },
   {
     quote: "Equipamento novo, horário cedo e professor circulando o tempo todo.",
@@ -121,8 +121,8 @@ export default function Home() {
               Treino sério para gente constante.
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-              Musculação, cross, lutas e cardio em uma estrutura seca, técnica e
-              acompanhada. Plano sem taxa de cancelamento no mensal.
+              Musculação, Zumba, Pilates, Boxe, Jiu-jitsu e Kickboxing em uma
+              estrutura de 500m² com 40 equipamentos e equipe presente.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -189,7 +189,7 @@ export default function Home() {
             </div>
             <p className="max-w-2xl text-sm leading-6 text-muted lg:justify-self-end">
               Modalidades com horário fixo, limite de vagas e instrutores em sala.
-              O foco é reduzir improviso e manter progressão semanal.
+              O foco é treinar saúde, condicionamento e evolução diária.
             </p>
           </div>
 
@@ -248,7 +248,8 @@ export default function Home() {
             <div className="mt-8 flex items-center gap-4 border-t border-line pt-6">
               <Users aria-hidden="true" className="size-9 text-accent" strokeWidth={2.2} />
               <p className="text-sm leading-6 text-muted">
-                1.800+ alunos ativos entre musculação, lutas e aulas coletivas.
+                Musculação, dança, Pilates e lutas em uma rotina de treinos para
+                evoluir todos os dias.
               </p>
             </div>
           </div>

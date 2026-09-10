@@ -40,7 +40,7 @@ const plans: Plan[] = [
       "Troca de treino a cada 45 dias",
       "Sem taxa de cancelamento",
     ],
-    limits: ["Aulas coletivas avulsas", "Sem acesso à área VIP"],
+    limits: ["Aulas coletivas avulsas", "Lutas com reserva"],
   },
   {
     name: "Performance",
@@ -52,12 +52,12 @@ const plans: Plan[] = [
     description: "Musculação, aulas e acompanhamento com agenda semanal.",
     features: [
       "Musculação ilimitada",
-      "Cross, spinning e mobilidade",
+      "Zumba, Pilates e aulas coletivas",
       "Bioimpedância mensal",
       "App de treino com carga registrada",
       "1 convidado por mês",
     ],
-    limits: ["Lutas com reserva obrigatória"],
+    limits: ["Jiu-jitsu Kids não incluso"],
   },
   {
     name: "Black",
@@ -68,7 +68,7 @@ const plans: Plan[] = [
     description: "Para rotina intensa, lutas e uso livre da estrutura premium.",
     features: [
       "Todas as modalidades",
-      "Área VIP e recovery",
+      "Boxe, Kickboxing e Jiu-jitsu",
       "Lutas ilimitadas",
       "2 avaliações mensais",
       "2 convidados por mês",
@@ -83,7 +83,7 @@ const comparisonRows = [
   ["Aulas coletivas inclusas", false, true, true],
   ["Lutas inclusas", false, "reserva", true],
   ["Bioimpedância recorrente", false, true, true],
-  ["Área VIP e recovery", false, false, true],
+  ["Jiu-jitsu Kids", false, false, true],
   ["Sem taxa de cancelamento", true, true, true],
 ] as const;
 
@@ -101,7 +101,7 @@ const faqs = [
   {
     question: "Preciso reservar aula coletiva?",
     answer:
-      "Cross Training, Muay Thai e Boxe Fit exigem reserva por limite de turma. Spinning e mobilidade também usam reserva em horário de pico.",
+      "Zumba, Pilates, Boxe, Jiu-jitsu e Kickboxing podem ter limite de turma. A confirmação acontece no atendimento da unidade.",
   },
   {
     question: "Posso testar antes de fechar?",

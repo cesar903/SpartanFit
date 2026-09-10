@@ -31,27 +31,27 @@ const method = [
   },
   {
     icon: TimerReset,
-    label: "Progressão por ciclo",
-    text: "Treinos revisados em blocos de 30 a 45 dias, com ajuste de volume e descanso.",
+    label: "Rotina completa",
+    text: "Musculação, dança, Pilates e lutas com horários fixos durante a semana.",
   },
   {
     icon: ShieldCheck,
-    label: "Sala sem abandono",
-    text: "Equipe circulando no piso, limite real em aulas coletivas e reserva nos horários fortes.",
+    label: "Equipe presente",
+    text: "12 funcionários para manter atendimento, organização e suporte na rotina de treino.",
   },
 ];
 
 const gallery = [
   {
     title: "Peso livre",
-    text: "Racks, plataformas, barras olímpicas e anilhas bumper.",
+    text: "Área de musculação com 40 equipamentos para treino diário.",
     image: "/images/spartan-fit-7.jpeg",
     imagePosition: "object-center",
     className: "lg:col-span-2 lg:row-span-2",
   },
   {
     title: "Máquinas",
-    text: "Linha convergente, cabos duplos e ajustes rápidos.",
+    text: "Equipamentos para força, condicionamento e saúde.",
     image: "/images/spartan-fit-6.jpeg",
     imagePosition: "object-center",
     className: "",
@@ -64,8 +64,8 @@ const gallery = [
     className: "",
   },
   {
-    title: "Recovery",
-    text: "Mobilidade, soltura e retorno progressivo.",
+    title: "Aulas coletivas",
+    text: "Zumba, Fit Dance, Pilates, Boxe, Kickboxing e Jiu-jitsu.",
     image: "/images/spartan-fit-4.jpeg",
     imagePosition: "object-center",
     className: "lg:col-span-2",
@@ -75,25 +75,25 @@ const gallery = [
 const trainers = [
   {
     name: "Caio Torres",
-    role: "Força e Cross Training",
+    role: "Musculação e condicionamento",
     credential: "CREF 142931-G/SP",
-    focus: "Agachamento, levantamento terra, condicionamento metabólico.",
+    focus: "Acompanhamento de sala, ajustes de treino e evolução diária.",
     image: "/images/spartan-fit-5.jpeg",
     imagePosition: "object-center",
   },
   {
     name: "Dani Rocha",
-    role: "Muay Thai e Boxe Fit",
+    role: "Lutas",
     credential: "Faixa preta / competição amadora",
-    focus: "Base, defesa, rounds técnicos e preparo de iniciantes.",
+    focus: "Boxe, Kickboxing, Jiu-jitsu adulto e turmas kids.",
     image: "/images/spartan-fit-6.jpeg",
     imagePosition: "object-center",
   },
   {
     name: "Rafa Nunes",
-    role: "Mobilidade e Reabilitação",
+    role: "Pilates e aulas coletivas",
     credential: "Fisiologia do exercício",
-    focus: "Quadril, ombro, coluna e retorno à carga sem improviso.",
+    focus: "Pilates, dança, coordenação e condicionamento.",
     image: "/images/spartan-fit-2.jpeg",
     imagePosition: "object-center",
   },
@@ -107,20 +107,19 @@ export default function SobrePage() {
           <div>
             <p className="micro-label text-accent">Sobre a Spartan Fit</p>
             <h1 className="display-cut mt-4 text-[84px] leading-[0.84] text-foreground sm:text-[132px] lg:text-[160px]">
-              Estrutura grande. Método simples.
+              Estrutura real. Rotina completa.
             </h1>
           </div>
           <div className="border border-line bg-surface p-5">
             <p className="text-sm leading-6 text-muted">
-              A Spartan Fit foi desenhada para reduzir atrito: equipamento certo,
-              professor no piso, grade fixa e plano claro. O aluno entra, treina e
-              sabe o que precisa repetir na próxima semana.
+              A Spartan Fit reúne 500m² de área, 40 equipamentos e 12 funcionários
+              para atender musculação, aulas coletivas e lutas em horários fixos.
             </p>
             <div className="mt-6 grid grid-cols-3 divide-x divide-line border border-line">
               {[
-                ["3000m²", "área"],
-                ["42", "estações"],
-                ["12", "profissionais"],
+                ["500m²", "área"],
+                ["40", "equipamentos"],
+                ["12", "funcionários"],
               ].map(([value, label]) => (
                 <div key={label} className="p-4">
                   <p className="display-cut text-5xl leading-none text-foreground">
@@ -190,8 +189,8 @@ export default function SobrePage() {
               </h2>
             </div>
             <p className="max-w-2xl text-sm leading-6 text-muted lg:justify-self-end">
-              A estrutura não é decoração. Ela separa fluxo de musculação, arena de
-              condicionamento, tatame e área de mobilidade para a rotina não travar.
+              A estrutura organiza musculação, sala coletiva e tatame para receber
+              quem quer cuidar da saúde, ganhar condicionamento e evoluir todos os dias.
             </p>
           </div>
 

@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
-type Category = "Todas" | "Força" | "Condicionamento" | "Lutas" | "Cardio" | "Mobilidade";
+type Category = "Todas" | "Musculação" | "Dança" | "Pilates" | "Lutas" | "Kids";
 
 type ClassItem = {
   id: string;
@@ -36,85 +36,97 @@ type ScheduleSlot = {
 
 const categories: Category[] = [
   "Todas",
-  "Força",
-  "Condicionamento",
+  "Musculação",
+  "Dança",
+  "Pilates",
   "Lutas",
-  "Cardio",
-  "Mobilidade",
+  "Kids",
 ];
 
 const classes: ClassItem[] = [
   {
-    id: "musculacao-guiada",
-    name: "Musculação Guiada",
-    category: "Força",
+    id: "musculacao",
+    name: "Musculação",
+    category: "Musculação",
     intensity: "Média",
     duration: "Livre",
     instructor: "Equipe técnica",
-    capacity: 42,
-    summary: "Treino com ajuste de carga, execução e pausa por objetivo.",
+    capacity: 40,
+    summary: "Sala com 40 equipamentos para força, condicionamento e evolução diária.",
     details:
-      "Ideal para hipertrofia, recomposição corporal e retorno ao treino. O professor revisa movimentos principais, controla progressão e troca exercícios quando necessário.",
+      "Musculação de segunda a sexta, das 06h às 22h, e aos sábados, das 09h às 12h. Estrutura de 500m² com acompanhamento no piso e equipamentos para treinar com consistência.",
   },
   {
-    id: "cross-training",
-    name: "Cross Training",
-    category: "Condicionamento",
-    intensity: "Máxima",
-    duration: "50 min",
-    instructor: "Caio Torres",
-    capacity: 16,
-    summary: "Força, cardio e técnica em blocos curtos com limite de vagas.",
+    id: "zumba-fit-dance",
+    name: "Zumba / Fit Dance",
+    category: "Dança",
+    intensity: "Alta",
+    duration: "60 min",
+    instructor: "Equipe Spartan Fit",
+    capacity: 24,
+    summary: "Aula ritmada para gasto calórico, coordenação e condicionamento.",
     details:
-      "Aula com aquecimento técnico, bloco de força e treino metabolic conditioning. Cargas são escaladas por nível e o aluno não treina sem correção.",
+      "Zumba e Fit Dance acontecem segunda e quarta, das 19h às 20h. A aula combina música, sequência guiada e intensidade progressiva.",
   },
   {
-    id: "muay-thai",
-    name: "Muay Thai",
+    id: "pilates",
+    name: "Pilates",
+    category: "Pilates",
+    intensity: "Baixa",
+    duration: "60 min",
+    instructor: "Equipe Spartan Fit",
+    capacity: 14,
+    summary: "Controle corporal, mobilidade e fortalecimento com técnica.",
+    details:
+      "Pilates acontece terça e quinta, das 07h às 08h. Indicado para postura, consciência corporal, estabilidade e retorno gradual ao treino.",
+  },
+  {
+    id: "boxe",
+    name: "Boxe",
     category: "Lutas",
     intensity: "Alta",
     duration: "60 min",
-    instructor: "Dani Rocha",
-    capacity: 22,
-    summary: "Base, golpes, defesa, saco e condicionamento específico.",
+    instructor: "Equipe Spartan Fit",
+    capacity: 20,
+    summary: "Base, golpes, esquiva, saco e condicionamento.",
     details:
-      "Treino para iniciantes e intermediários, com contato controlado. Luvas são obrigatórias e caneleira é indicada a partir do segundo mês.",
+      "Boxe acontece terça e quinta, das 08h às 09h. Treino técnico com foco em coordenação, defesa, potência e condicionamento.",
   },
   {
-    id: "spinning",
-    name: "Spinning",
-    category: "Cardio",
-    intensity: "Alta",
-    duration: "45 min",
-    instructor: "Livia Moura",
-    capacity: 28,
-    summary: "Cardio por zona, bike regulada e bloco final de sprint.",
-    details:
-      "Sala dedicada com ventilação reforçada. O instrutor regula bike, cadência e resistência para reduzir improviso e manter intensidade real.",
-  },
-  {
-    id: "mobilidade",
-    name: "Mobilidade Atlética",
-    category: "Mobilidade",
-    intensity: "Baixa",
-    duration: "40 min",
-    instructor: "Rafa Nunes",
-    capacity: 18,
-    summary: "Quadril, tornozelo, ombro e coluna para treinar melhor.",
-    details:
-      "Sessão focada em amplitude, controle articular e preparação para agachamento, levantamento terra, corrida e lutas.",
-  },
-  {
-    id: "boxe-fit",
-    name: "Boxe Fit",
+    id: "jiu-jitsu-adulto",
+    name: "Jiu-jitsu Adulto",
     category: "Lutas",
     intensity: "Alta",
-    duration: "50 min",
-    instructor: "Nando Lima",
-    capacity: 20,
-    summary: "Manopla, saco, esquiva e rounds curtos sem sparring obrigatório.",
+    duration: "120 min",
+    instructor: "Equipe Spartan Fit",
+    capacity: 24,
+    summary: "Técnica, rola controlado, defesa e evolução no tatame.",
     details:
-      "Aula ritmada para técnica e condicionamento. O treino combina deslocamento, coordenação, core e sequências de golpes.",
+      "Jiu-jitsu adulto acontece terça e quinta, das 20h às 22h. Aula para desenvolver base, posicionamento, defesa e resistência.",
+  },
+  {
+    id: "kickboxing",
+    name: "Kickboxing",
+    category: "Lutas",
+    intensity: "Alta",
+    duration: "60 min",
+    instructor: "Equipe Spartan Fit",
+    capacity: 18,
+    summary: "Chutes, golpes, deslocamento e condicionamento intenso.",
+    details:
+      "Kickboxing acontece segunda e quarta, das 21h às 22h. Aula dinâmica para técnica de luta, cardio e potência.",
+  },
+  {
+    id: "jiu-jitsu-kids",
+    name: "Jiu-jitsu Kids",
+    category: "Kids",
+    intensity: "Média",
+    duration: "60 min",
+    instructor: "Equipe Spartan Fit",
+    capacity: 18,
+    summary: "Turmas Kids 1, 2 e 3 com horários por idade e evolução técnica.",
+    details:
+      "Kids 1: segunda, das 20h às 21h, e quinta, das 18h às 19h. Kids 2: terça e sexta, das 18h30 às 19h30. Kids 3: terça e sexta, das 19h30 às 20h30.",
   },
 ];
 
@@ -122,54 +134,53 @@ const schedule: ScheduleSlot[] = [
   {
     day: "Seg",
     slots: [
-      { time: "06:10", classId: "spinning", room: "Bike" },
-      { time: "07:00", classId: "musculacao-guiada", room: "Peso livre" },
-      { time: "19:00", classId: "cross-training", room: "Arena" },
-      { time: "20:00", classId: "muay-thai", room: "Tatame" },
+      { time: "06h-22h", classId: "musculacao", room: "Peso livre" },
+      { time: "19h-20h", classId: "zumba-fit-dance", room: "Sala coletiva" },
+      { time: "20h-21h", classId: "jiu-jitsu-kids", room: "Tatame / Kids 1" },
+      { time: "21h-22h", classId: "kickboxing", room: "Tatame" },
     ],
   },
   {
     day: "Ter",
     slots: [
-      { time: "06:30", classId: "mobilidade", room: "Estúdio" },
-      { time: "12:15", classId: "boxe-fit", room: "Tatame" },
-      { time: "18:30", classId: "spinning", room: "Bike" },
-      { time: "20:00", classId: "muay-thai", room: "Tatame" },
+      { time: "06h-22h", classId: "musculacao", room: "Peso livre" },
+      { time: "07h-08h", classId: "pilates", room: "Sala coletiva" },
+      { time: "08h-09h", classId: "boxe", room: "Tatame" },
+      { time: "18h30-19h30", classId: "jiu-jitsu-kids", room: "Tatame / Kids 2" },
+      { time: "19h30-20h30", classId: "jiu-jitsu-kids", room: "Tatame / Kids 3" },
+      { time: "20h-22h", classId: "jiu-jitsu-adulto", room: "Tatame" },
     ],
   },
   {
     day: "Qua",
     slots: [
-      { time: "07:00", classId: "musculacao-guiada", room: "Peso livre" },
-      { time: "12:10", classId: "cross-training", room: "Arena" },
-      { time: "19:00", classId: "cross-training", room: "Arena" },
-      { time: "20:10", classId: "boxe-fit", room: "Tatame" },
+      { time: "06h-22h", classId: "musculacao", room: "Peso livre" },
+      { time: "19h-20h", classId: "zumba-fit-dance", room: "Sala coletiva" },
+      { time: "21h-22h", classId: "kickboxing", room: "Tatame" },
     ],
   },
   {
     day: "Qui",
     slots: [
-      { time: "06:10", classId: "spinning", room: "Bike" },
-      { time: "07:10", classId: "mobilidade", room: "Estúdio" },
-      { time: "18:40", classId: "musculacao-guiada", room: "Peso livre" },
-      { time: "20:00", classId: "muay-thai", room: "Tatame" },
+      { time: "06h-22h", classId: "musculacao", room: "Peso livre" },
+      { time: "07h-08h", classId: "pilates", room: "Sala coletiva" },
+      { time: "08h-09h", classId: "boxe", room: "Tatame" },
+      { time: "18h-19h", classId: "jiu-jitsu-kids", room: "Tatame / Kids 1" },
+      { time: "20h-22h", classId: "jiu-jitsu-adulto", room: "Tatame" },
     ],
   },
   {
     day: "Sex",
     slots: [
-      { time: "06:30", classId: "cross-training", room: "Arena" },
-      { time: "12:15", classId: "spinning", room: "Bike" },
-      { time: "19:00", classId: "cross-training", room: "Arena" },
-      { time: "20:00", classId: "boxe-fit", room: "Tatame" },
+      { time: "06h-22h", classId: "musculacao", room: "Peso livre" },
+      { time: "18h30-19h30", classId: "jiu-jitsu-kids", room: "Tatame / Kids 2" },
+      { time: "19h30-20h30", classId: "jiu-jitsu-kids", room: "Tatame / Kids 3" },
     ],
   },
   {
     day: "Sab",
     slots: [
-      { time: "08:00", classId: "mobilidade", room: "Estúdio" },
-      { time: "09:00", classId: "spinning", room: "Bike" },
-      { time: "10:00", classId: "cross-training", room: "Arena" },
+      { time: "09h-12h", classId: "musculacao", room: "Peso livre" },
     ],
   },
 ];
@@ -243,8 +254,8 @@ export function ClassBoard() {
             <div className="mt-6 grid grid-cols-3 divide-x divide-line border border-line">
               {[
                 ["06", "dias"],
-                ["36", "aulas"],
-                ["04", "salas"],
+                ["08", "modalidades"],
+                ["40", "equipamentos"],
               ].map(([value, label]) => (
                 <div key={label} className="p-4">
                   <p className="display-cut text-5xl leading-none text-foreground">
@@ -454,7 +465,12 @@ export function ClassBoard() {
                   ["Intensidade", selectedClass.intensity],
                   ["Duração", selectedClass.duration],
                   ["Instrutor", selectedClass.instructor],
-                  ["Capacidade", `${selectedClass.capacity} alunos`],
+                  [
+                    selectedClass.id === "musculacao" ? "Estrutura" : "Capacidade",
+                    selectedClass.id === "musculacao"
+                      ? `${selectedClass.capacity} equipamentos`
+                      : `${selectedClass.capacity} alunos`,
+                  ],
                 ].map(([label, value]) => (
                   <div key={label} className="border border-line bg-surface p-4">
                     <dt className="micro-label text-subtle">{label}</dt>

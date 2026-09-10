@@ -15,17 +15,18 @@ import {
 import { useState } from "react";
 
 const hours = [
-  ["Seg-Sex", "05h às 23h"],
-  ["Sábado", "07h às 18h"],
-  ["Domingo", "08h às 14h"],
+  ["Seg-Sex", "06h às 22h"],
+  ["Sábado", "09h às 12h"],
 ];
 
 const visitOptions = [
   "Musculação",
-  "Cross Training",
-  "Lutas",
-  "Spinning",
-  "Mobilidade",
+  "Zumba / Fit Dance",
+  "Pilates",
+  "Boxe",
+  "Jiu-jitsu Adulto",
+  "Kickboxing",
+  "Jiu-jitsu Kids",
 ];
 
 const contactPoints = [
@@ -62,10 +63,9 @@ export function ContactBoard() {
           <div className="border border-line bg-surface p-5">
             <p className="text-sm leading-6 text-muted">
               A visita leva 30 minutos: tour pela unidade, conversa de objetivo,
-              indicação de modalidade e aula experimental quando houver vaga no
-              horário.
+              indicação de modalidade e orientação sobre horários disponíveis.
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {hours.map(([day, time]) => (
                 <div key={day} className="border border-line bg-background p-4">
                   <p className="micro-label text-subtle">{day}</p>
@@ -119,7 +119,7 @@ export function ContactBoard() {
                   Jardim Tupã, São Bernardo do Campo - SP
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-muted">
-                  Estacionamento conveniado na Rua Vergueiro, 2 horas com desconto.
+                  Estr. Henrique Rosa, 555. Unidade com 500m² e 40 equipamentos.
                 </p>
               </div>
             </div>
@@ -131,8 +131,8 @@ export function ContactBoard() {
               Reserve seu primeiro treino.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">
-              Preencha os dados e indique o melhor horário. O retorno acontece por
-              WhatsApp no mesmo dia útil.
+              Preencha os dados e indique a modalidade. O retorno acontece por
+              WhatsApp para confirmar o melhor horário.
             </p>
 
             {sent ? (
@@ -217,7 +217,7 @@ export function ContactBoard() {
                     <input
                       required
                       name="preferredTime"
-                      placeholder="Ex: terça, 19h"
+                      placeholder="Ex: terça, 20h"
                       className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-subtle"
                     />
                   </span>
