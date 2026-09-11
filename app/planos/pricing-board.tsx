@@ -3,135 +3,127 @@
 import {
   BadgeCheck,
   ChevronDown,
-  CircleSlash2,
   CreditCard,
   Dumbbell,
   Flame,
   ShieldCheck,
+  Wallet,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { CtaButton } from "../components/cta-button";
 
-type BillingCycle = "mensal" | "semestral";
+type BillingCycle = "mensal" | "semestral" | "anual";
 
 type Plan = {
   name: string;
   badge: string;
-  monthly: number;
-  semester: number;
-  enrollment: string;
   highlight?: boolean;
   description: string;
+  prices: Record<BillingCycle, { label: string; note: string }>;
   features: string[];
-  limits: string[];
 };
 
 const plans: Plan[] = [
   {
-    name: "Mensal",
-    badge: "Flexível",
-    monthly: 159,
-    semester: 139,
-    enrollment: "R$ 49",
-    description: "Para quem quer treinar sem contrato longo.",
-    features: [
-      "Musculação todos os dias",
-      "Avaliação física inicial",
-      "Troca de treino a cada 45 dias",
-      "Sem taxa de cancelamento",
-    ],
-    limits: ["Aulas coletivas avulsas", "Lutas com reserva"],
-  },
-  {
-    name: "Performance",
-    badge: "Mais escolhido",
-    monthly: 229,
-    semester: 199,
-    enrollment: "Isenta",
+    name: "Academia",
+    badge: "Musculação",
     highlight: true,
-    description: "Musculação, aulas e acompanhamento com agenda semanal.",
+    description: "Acesso à musculação com estrutura de 500m² e 40 equipamentos.",
+    prices: {
+      mensal: { label: "R$ 89,90", note: "mensal" },
+      semestral: { label: "6x R$ 79,90", note: "ou R$ 479,90 à vista" },
+      anual: { label: "12x R$ 69,90", note: "ou R$ 839,90 à vista" },
+    },
     features: [
-      "Musculação ilimitada",
-      "Zumba, Pilates e aulas coletivas",
-      "Bioimpedância mensal",
-      "App de treino com carga registrada",
-      "1 convidado por mês",
+      "Musculação de segunda a sexta, 06h às 22h",
+      "Sábado, 09h às 12h",
+      "40 equipamentos",
+      "Equipe presente no piso",
     ],
-    limits: ["Jiu-jitsu Kids não incluso"],
   },
   {
-    name: "Black",
-    badge: "Completo",
-    monthly: 319,
-    semester: 279,
-    enrollment: "Isenta",
-    description: "Para rotina intensa, lutas e uso livre da estrutura premium.",
+    name: "Kickboxing",
+    badge: "Luta",
+    description: "Treino técnico de golpes, deslocamento, defesa e condicionamento.",
+    prices: {
+      mensal: { label: "R$ 69,90", note: "mensal" },
+      semestral: { label: "6x R$ 66,91", note: "ou R$ 401,46 à vista" },
+      anual: { label: "12x R$ 63,92", note: "ou R$ 767,04 à vista" },
+    },
     features: [
-      "Todas as modalidades",
-      "Boxe, Kickboxing e Jiu-jitsu",
-      "Lutas ilimitadas",
-      "2 avaliações mensais",
-      "2 convidados por mês",
-      "Armário fixo incluso",
+      "Segunda e quarta",
+      "21h às 22h",
+      "Aula em tatame",
+      "Condicionamento intenso",
     ],
-    limits: ["Personal trainer não incluso"],
+  },
+  {
+    name: "Jiu-jitsu",
+    badge: "Adulto",
+    description: "Aula para base, defesa, posicionamento e evolução no tatame.",
+    prices: {
+      mensal: { label: "R$ 69,90", note: "mensal" },
+      semestral: { label: "6x R$ 66,91", note: "ou R$ 401,46 à vista" },
+      anual: { label: "12x R$ 63,92", note: "ou R$ 767,04 à vista" },
+    },
+    features: [
+      "Terça e quinta",
+      "20h às 22h",
+      "Turma adulta",
+      "Técnica e resistência",
+    ],
+  },
+  {
+    name: "Jiu-jitsu Kids",
+    badge: "Kids",
+    description: "Turmas infantis organizadas por horário e evolução técnica.",
+    prices: {
+      mensal: { label: "R$ 59,90", note: "mensal" },
+      semestral: { label: "6x R$ 57,41", note: "ou R$ 344,46 à vista" },
+      anual: { label: "12x R$ 54,92", note: "ou R$ 659,04 à vista" },
+    },
+    features: [
+      "Kids 1, Kids 2 e Kids 3",
+      "Horários fixos durante a semana",
+      "Aula em tatame",
+      "Disciplina, coordenação e técnica",
+    ],
   },
 ];
 
 const comparisonRows = [
-  ["Musculação ilimitada", true, true, true],
-  ["Aulas coletivas inclusas", false, true, true],
-  ["Lutas inclusas", false, "reserva", true],
-  ["Bioimpedância recorrente", false, true, true],
-  ["Jiu-jitsu Kids", false, false, true],
-  ["Sem taxa de cancelamento", true, true, true],
+  ["Academia", "R$ 89,90", "6x R$ 79,90", "12x R$ 69,90"],
+  ["Kickboxing", "R$ 69,90", "6x R$ 66,91", "12x R$ 63,92"],
+  ["Jiu-jitsu", "R$ 69,90", "6x R$ 66,91", "12x R$ 63,92"],
+  ["Jiu-jitsu Kids", "R$ 59,90", "6x R$ 57,41", "12x R$ 54,92"],
 ] as const;
 
 const faqs = [
   {
-    question: "Tem taxa de cancelamento?",
+    question: "Quais formas de pagamento são aceitas?",
     answer:
-      "No plano mensal, não. Nos planos semestrais, o cancelamento segue o saldo proporcional das mensalidades com desconto já utilizado.",
+      "Aceitamos débito, crédito, Pix ou dinheiro. O pagamento recorrente fica disponível pelo app.",
   },
   {
-    question: "A matrícula é cobrada em todos os planos?",
+    question: "O semestral e o anual podem ser pagos à vista?",
     answer:
-      "A taxa de matrícula é cobrada apenas no plano Mensal. Performance e Black entram com matrícula isenta.",
+      "Sim. Cada plano tem opção parcelada e opção à vista. Os valores à vista aparecem abaixo do preço principal.",
   },
   {
-    question: "Preciso reservar aula coletiva?",
+    question: "O plano de academia inclui lutas?",
     answer:
-      "Zumba, Pilates, Boxe, Jiu-jitsu e Kickboxing podem ter limite de turma. A confirmação acontece no atendimento da unidade.",
+      "Não. Academia, Kickboxing, Jiu-jitsu e Jiu-jitsu Kids são planos separados nesta tabela.",
   },
   {
-    question: "Posso testar antes de fechar?",
+    question: "Posso confirmar o melhor plano antes de fechar?",
     answer:
-      "Sim. A aula experimental inclui tour pela unidade, conversa de objetivo e indicação do melhor plano para sua rotina.",
+      "Sim. O atendimento pode confirmar modalidade, turma, horário e forma de pagamento antes da matrícula.",
   },
 ];
-
-function formatPrice(value: number) {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    maximumFractionDigits: 0,
-  })
-    .format(value)
-    .replace(/\u00a0/g, " ");
-}
 
 export function PricingBoard() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("mensal");
   const [openFaq, setOpenFaq] = useState(0);
-
-  const activePlans = useMemo(
-    () =>
-      plans.map((plan) => ({
-        ...plan,
-        price: billingCycle === "mensal" ? plan.monthly : plan.semester,
-      })),
-    [billingCycle],
-  );
 
   return (
     <main>
@@ -140,21 +132,21 @@ export function PricingBoard() {
           <div>
             <p className="micro-label text-accent">Planos & valores</p>
             <h1 className="display-cut mt-4 text-[86px] leading-[0.84] text-foreground sm:text-[132px] lg:text-[158px]">
-              Pague pelo treino que usa.
+              Preço claro. Treino certo.
             </h1>
           </div>
           <div className="border border-line bg-surface p-5">
             <p className="text-sm leading-6 text-muted">
-              Valores claros, sem frase pequena escondida. Escolha mensal para
-              flexibilidade ou semestral para reduzir o valor recorrente.
+              Escolha a modalidade e veja mensal, semestral ou anual. Débito,
+              crédito, Pix e dinheiro disponíveis; recorrência pelo app.
             </p>
-            <div className="mt-6 grid grid-cols-2 border border-line p-1">
-              {(["mensal", "semestral"] as BillingCycle[]).map((cycle) => (
+            <div className="mt-6 grid grid-cols-3 border border-line p-1">
+              {(["mensal", "semestral", "anual"] as BillingCycle[]).map((cycle) => (
                 <button
                   key={cycle}
                   type="button"
                   onClick={() => setBillingCycle(cycle)}
-                  className={`h-11 text-xs font-black uppercase tracking-[0.16em] transition duration-150 ${
+                  className={`h-11 text-[11px] font-black uppercase tracking-[0.14em] transition duration-150 sm:text-xs ${
                     billingCycle === cycle
                       ? "bg-accent text-white"
                       : "text-muted hover:bg-background hover:text-accent"
@@ -169,67 +161,62 @@ export function PricingBoard() {
       </section>
 
       <section className="py-12 sm:py-16">
-        <div className="site-shell grid gap-5 lg:grid-cols-3">
-          {activePlans.map((plan) => (
-            <article
-              key={plan.name}
-              className={`relative min-w-0 flex min-h-[620px] flex-col border p-5 transition duration-150 hover:-translate-y-0.5 sm:p-6 ${
-                plan.highlight
-                  ? "border-accent bg-[#120b0b]"
-                  : "border-line bg-surface hover:border-line-strong"
-              }`}
-            >
-              {plan.highlight ? (
-                <span className="absolute right-5 top-5 micro-label bg-accent px-3 py-2 text-white">
-                  Recomendado
-                </span>
-              ) : null}
+        <div className="site-shell grid gap-5 lg:grid-cols-4">
+          {plans.map((plan) => {
+            const price = plan.prices[billingCycle];
 
-              <div>
-                <p className="micro-label text-accent">{plan.badge}</p>
-                <h2 className="display-cut mt-4 text-7xl leading-none text-foreground">
-                  {plan.name}
-                </h2>
-                <p className="mt-4 min-h-12 text-sm leading-6 text-muted">
-                  {plan.description}
-                </p>
-              </div>
+            return (
+              <article
+                key={plan.name}
+                className={`relative min-w-0 flex min-h-[610px] flex-col border p-5 transition duration-150 hover:-translate-y-0.5 sm:p-6 ${
+                  plan.highlight
+                    ? "border-accent bg-[#120b0b]"
+                    : "border-line bg-surface hover:border-line-strong"
+                }`}
+              >
+                {plan.highlight ? (
+                  <span className="absolute right-5 top-5 micro-label bg-accent px-3 py-2 text-white">
+                    Academia
+                  </span>
+                ) : null}
 
-              <div className="mt-8 border-y border-line py-6">
-                <p className="display-cut text-6xl leading-none text-foreground sm:text-7xl">
-                  {formatPrice(plan.price)}
-                </p>
-                <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-subtle">
-                  por mês / matrícula {plan.enrollment}
-                </p>
-              </div>
-
-              <div className="mt-6 grid flex-1 content-start gap-3">
-                {plan.features.map((feature) => (
-                  <p key={feature} className="flex gap-3 text-sm leading-6 text-foreground">
-                    <BadgeCheck
-                      aria-hidden="true"
-                      className="mt-1 size-4 shrink-0 text-accent"
-                    />
-                    {feature}
+                <div>
+                  <p className="micro-label text-accent">{plan.badge}</p>
+                  <h2 className="display-cut mt-4 text-6xl leading-none text-foreground">
+                    {plan.name}
+                  </h2>
+                  <p className="mt-4 min-h-18 text-sm leading-6 text-muted">
+                    {plan.description}
                   </p>
-                ))}
-                {plan.limits.map((limit) => (
-                  <p key={limit} className="flex gap-3 text-sm leading-6 text-muted">
-                    <CircleSlash2
-                      aria-hidden="true"
-                      className="mt-1 size-4 shrink-0 text-subtle"
-                    />
-                    {limit}
-                  </p>
-                ))}
-              </div>
+                </div>
 
-              <CtaButton href="/contato" className="mt-8 w-full">
-                Quero esse plano
-              </CtaButton>
-            </article>
-          ))}
+                <div className="mt-8 border-y border-line py-6">
+                  <p className="display-cut text-5xl leading-none text-foreground sm:text-6xl">
+                    {price.label}
+                  </p>
+                  <p className="mt-2 min-h-8 text-xs font-black uppercase tracking-[0.14em] text-subtle">
+                    {price.note}
+                  </p>
+                </div>
+
+                <div className="mt-6 grid flex-1 content-start gap-3">
+                  {plan.features.map((feature) => (
+                    <p key={feature} className="flex gap-3 text-sm leading-6 text-foreground">
+                      <BadgeCheck
+                        aria-hidden="true"
+                        className="mt-1 size-4 shrink-0 text-accent"
+                      />
+                      {feature}
+                    </p>
+                  ))}
+                </div>
+
+                <CtaButton href="/contato" className="mt-8 w-full">
+                  Quero esse plano
+                </CtaButton>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -239,27 +226,27 @@ export function PricingBoard() {
             <div>
               <p className="micro-label text-accent">Comparativo</p>
               <h2 className="display-cut mt-4 text-7xl leading-none text-foreground sm:text-8xl">
-                Sem pacote confuso.
+                Valores por modalidade.
               </h2>
             </div>
             <div className="grid gap-3 text-sm text-muted sm:grid-cols-3">
               <p className="flex items-center gap-2 border border-line bg-background p-3">
                 <Dumbbell aria-hidden="true" className="size-4 text-accent" />
-                Treino livre
+                Academia
               </p>
               <p className="flex items-center gap-2 border border-line bg-background p-3">
                 <Flame aria-hidden="true" className="size-4 text-accent" />
-                Aulas fortes
+                Lutas
               </p>
               <p className="flex items-center gap-2 border border-line bg-background p-3">
                 <ShieldCheck aria-hidden="true" className="size-4 text-accent" />
-                Contrato claro
+                Plano claro
               </p>
             </div>
           </div>
 
           <div className="grid gap-3 md:hidden">
-            {comparisonRows.map(([label, mensal, performance, black]) => (
+            {comparisonRows.map(([label, mensal, semestral, anual]) => (
               <article key={label} className="border border-line bg-background p-4">
                 <h3 className="text-sm font-black uppercase tracking-[0.12em] text-foreground">
                   {label}
@@ -267,20 +254,16 @@ export function PricingBoard() {
                 <div className="mt-4 grid gap-2">
                   {[
                     ["Mensal", mensal],
-                    ["Performance", performance],
-                    ["Black", black],
-                  ].map(([planName, value]) => (
+                    ["Semestral", semestral],
+                    ["Anual", anual],
+                  ].map(([cycle, value]) => (
                     <p
-                      key={`${label}-${planName}`}
+                      key={`${label}-${cycle}`}
                       className="flex items-center justify-between gap-4 border-t border-line pt-2 text-sm"
                     >
-                      <span className="font-semibold text-muted">{planName}</span>
-                      <span className="font-black uppercase tracking-[0.1em] text-foreground">
-                        {value === true
-                          ? "Sim"
-                          : value === false
-                            ? "Não incluso"
-                            : "Com reserva"}
+                      <span className="font-semibold text-muted">{cycle}</span>
+                      <span className="font-black uppercase tracking-[0.08em] text-foreground">
+                        {value}
                       </span>
                     </p>
                   ))}
@@ -293,32 +276,21 @@ export function PricingBoard() {
             <table className="w-full min-w-[720px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-line">
-                  <th className="p-4 micro-label text-muted">Item</th>
-                  {plans.map((plan) => (
-                    <th key={plan.name} className="p-4 micro-label text-foreground">
-                      {plan.name}
-                    </th>
-                  ))}
+                  <th className="p-4 micro-label text-muted">Plano</th>
+                  <th className="p-4 micro-label text-foreground">Mensal</th>
+                  <th className="p-4 micro-label text-foreground">Semestral</th>
+                  <th className="p-4 micro-label text-foreground">Anual</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">
-                {comparisonRows.map(([label, mensal, performance, black]) => (
+                {comparisonRows.map(([label, mensal, semestral, anual]) => (
                   <tr key={label}>
                     <th className="p-4 text-sm font-semibold text-foreground">{label}</th>
-                    {[mensal, performance, black].map((value, index) => (
+                    {[mensal, semestral, anual].map((value, index) => (
                       <td key={`${label}-${index}`} className="p-4 text-sm text-muted">
-                        {value === true ? (
-                          <span className="inline-flex items-center gap-2 font-black uppercase tracking-[0.1em] text-accent">
-                            <BadgeCheck aria-hidden="true" className="size-4" />
-                            Sim
-                          </span>
-                        ) : value === false ? (
-                          <span className="text-subtle">Não incluso</span>
-                        ) : (
-                          <span className="font-black uppercase tracking-[0.1em] text-foreground">
-                            Com reserva
-                          </span>
-                        )}
+                        <span className="font-black uppercase tracking-[0.08em] text-foreground">
+                          {value}
+                        </span>
                       </td>
                     ))}
                   </tr>
@@ -334,10 +306,10 @@ export function PricingBoard() {
           <div>
             <p className="micro-label text-accent">FAQ</p>
             <h2 className="display-cut mt-4 text-7xl leading-none text-foreground">
-              Pergunta direta. Resposta direta.
+              Pagamento direto.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-6 text-muted">
-              Cancelamento, matrícula, reserva de aula e teste antes de fechar.
+              Débito, crédito, Pix, dinheiro e recorrência disponível pelo app.
             </p>
           </div>
 
@@ -378,14 +350,18 @@ export function PricingBoard() {
       <section className="border-t border-line bg-[#080808] py-10">
         <div className="site-shell flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="micro-label text-muted">Fechamento presencial ou online</p>
+            <p className="micro-label text-muted">Formas de pagamento</p>
             <h2 className="display-cut mt-3 text-5xl leading-none text-foreground">
-              Matrícula em até 8 minutos.
+              Débito, crédito, Pix ou dinheiro.
             </h2>
           </div>
           <p className="flex items-center gap-3 text-sm font-semibold text-muted">
             <CreditCard aria-hidden="true" className="size-5 text-accent" />
-            Pix, crédito ou débito recorrente.
+            Recorrência disponível no app.
+          </p>
+          <p className="flex items-center gap-3 text-sm font-semibold text-muted">
+            <Wallet aria-hidden="true" className="size-5 text-accent" />
+            Planos à vista com Pix ou dinheiro.
           </p>
         </div>
       </section>

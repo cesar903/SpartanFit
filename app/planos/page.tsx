@@ -4,7 +4,7 @@ import { PricingBoard } from "./pricing-board";
 export const metadata: Metadata = {
   title: "Planos e Valores",
   description:
-    "Compare planos mensais e semestrais da Spartan Fit com valores, benefícios e FAQ.",
+    "Compare valores mensais, semestrais e anuais da Spartan Fit para academia, Kickboxing, Jiu-jitsu e Jiu-jitsu Kids.",
 };
 
 export default function PlanosPage() {

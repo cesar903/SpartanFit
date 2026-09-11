@@ -106,8 +106,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#080808_0%,rgba(8,8,8,0.94)_35%,rgba(8,8,8,0.66)_68%,rgba(8,8,8,0.28)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.2),#080808_96%)]" />
 
-        <div className="site-shell relative grid min-h-[calc(100svh-80px)] content-start pt-10 sm:min-h-[82svh] sm:content-end sm:pt-20">
-          <div className="max-w-5xl pb-12 pt-0 sm:pb-16 sm:pt-20">
+        <div className="site-shell relative grid min-h-[calc(100svh-80px)] content-start sm:min-h-[82svh] sm:content-end">
+          <div className="max-w-5xl pb-12 pt-0 sm:pb-16 sm:pt-10">
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <span className="micro-label border border-accent bg-accent-soft px-3 py-2 text-accent">
                 Matrícula aberta

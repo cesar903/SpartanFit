@@ -63,7 +63,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 xl:flex">
           <div className="flex items-center gap-2 border border-line px-3 py-2 text-xs font-semibold text-muted">
             <MapPin aria-hidden="true" className="size-4 text-accent" />
-            <span>Jardim Tupã, São Bernardo do Campo - SP</span>
+            <span>Jardim Tupã, SBC - SP</span>
           </div>
           <CtaButton href="/contato">Aula experimental</CtaButton>
         </div>
