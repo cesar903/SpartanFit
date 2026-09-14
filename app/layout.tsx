@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Bebas_Neue } from "next/font/google";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
+import { WhatsappFloat } from "./components/whatsapp-float";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div id="conteudo" className="flex-1">
           {children}
         </div>
+        <WhatsappFloat />
         <SiteFooter />
       </body>
     </html>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AtSign, Clock3, MapPinned, Phone } from "lucide-react";
 import { CtaButton } from "./cta-button";
+import { buildWhatsappUrl, defaultWhatsappMessage, whatsappDisplay } from "../lib/whatsapp";
 
 const footerLinks = [
   { href: "/aulas", label: "Grade de treino semanal" },
@@ -62,10 +63,15 @@ export function SiteFooter() {
               <Clock3 aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />
               Segunda a sexta, 06h às 22h. Sábado, 09h às 12h.
             </p>
-            <p className="flex gap-3">
+            <a
+              href={buildWhatsappUrl(defaultWhatsappMessage)}
+              target="_blank"
+              rel="noreferrer"
+              className="flex gap-3 transition duration-150 hover:text-foreground"
+            >
               <Phone aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />
-              WhatsApp: (11) 94002-1188
-            </p>
+              WhatsApp: {whatsappDisplay}
+            </a>
             <Link
               href="https://www.instagram.com/"
               className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em] text-foreground transition duration-150 hover:text-accent"

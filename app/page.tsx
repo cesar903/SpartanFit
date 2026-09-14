@@ -151,7 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-line py-12 sm:py-16">
+      <section className="border-b border-line py-10 sm:py-16">
         <div className="site-shell grid gap-6 lg:grid-cols-3">
           {highlights.map((item) => {
             const Icon = item.icon;
@@ -159,7 +159,7 @@ export default function Home() {
             return (
               <article
                 key={item.label}
-                className="group border border-line bg-surface p-6 transition duration-150 hover:-translate-y-0.5 hover:border-accent/70"
+                className="group border border-line bg-surface p-4 transition duration-150 hover:-translate-y-0.5 hover:border-accent/70 sm:p-6"
               >
                 <div className="flex items-start justify-between gap-6">
                   <div>
@@ -178,9 +178,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-20">
         <div className="site-shell">
-          <div className="mb-8 grid gap-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div className="mb-6 grid gap-4 sm:mb-8 sm:gap-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <p className="micro-label text-accent">Aulas populares</p>
               <h2 className="display-cut mt-4 text-7xl leading-none text-foreground sm:text-8xl">
@@ -217,7 +217,7 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <h3 className="display-cut text-5xl leading-none text-foreground lg:text-6xl">
                     {classItem.name}
                   </h3>
@@ -225,7 +225,7 @@ export default function Home() {
                     {classItem.intensity}
                   </p>
                 </div>
-                <div className="mt-auto border-t border-line p-6">
+                <div className="mt-auto border-t border-line p-4 sm:p-6">
                   <p className="text-sm leading-6 text-muted">{classItem.detail}</p>
                   <p className="mt-5 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-foreground">
                     {classItem.schedule}
@@ -238,15 +238,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface py-14 sm:py-18">
-        <div className="site-shell grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
-          <div className="border border-line bg-background p-6">
+      <section className="border-y border-line bg-surface py-9 sm:py-18">
+        <div className="site-shell grid gap-4 sm:gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
+          <div className="border border-line bg-background p-4 sm:p-6">
             <p className="micro-label text-muted">Prova social</p>
-            <h2 className="display-cut mt-5 text-6xl leading-none text-foreground sm:text-7xl">
+            <h2 className="display-cut mt-3 text-5xl leading-none text-foreground sm:mt-5 sm:text-7xl">
               Aluno percebe processo.
             </h2>
-            <div className="mt-8 flex items-center gap-4 border-t border-line pt-6">
-              <Users aria-hidden="true" className="size-9 text-accent" strokeWidth={2.2} />
+            <div className="mt-5 flex items-center gap-3 border-t border-line pt-4 sm:mt-8 sm:gap-4 sm:pt-6">
+              <Users aria-hidden="true" className="size-7 text-accent sm:size-9" strokeWidth={2.2} />
               <p className="text-sm leading-6 text-muted">
                 Musculação, dança, Pilates e lutas em uma rotina de treinos para
                 evoluir todos os dias.
@@ -254,16 +254,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-3 sm:gap-5 md:grid-cols-3">
             {testimonials.map((item) => (
               <figure
                 key={item.author}
-                className="flex min-h-[260px] flex-col justify-between border border-line bg-[#0d0d0d] p-6 transition duration-150 hover:-translate-y-0.5 hover:border-line-strong"
+                className="flex min-h-[188px] flex-col justify-between border border-line bg-[#0d0d0d] p-4 transition duration-150 hover:-translate-y-0.5 hover:border-line-strong sm:min-h-[260px] sm:p-6"
               >
-                <blockquote className="text-base font-semibold leading-7 text-foreground">
+                <blockquote className="text-sm font-semibold leading-6 text-foreground sm:text-base sm:leading-7">
                   &quot;{item.quote}&quot;
                 </blockquote>
-                <figcaption className="mt-8 border-t border-line pt-5">
+                <figcaption className="mt-5 border-t border-line pt-4 sm:mt-8 sm:pt-5">
                   <p className="text-sm font-black uppercase tracking-[0.12em] text-accent">
                     {item.author}
                   </p>

@@ -6,13 +6,13 @@ import {
   Clock3,
   Mail,
   MapPin,
-  MessageCircle,
   Navigation,
   Phone,
   Send,
   UserRound,
 } from "lucide-react";
 import { useState } from "react";
+import { buildWhatsappUrl, whatsappDisplay } from "../lib/whatsapp";
 
 const hours = [
   ["Seg-Sex", "06h às 22h"],
@@ -38,7 +38,7 @@ const contactPoints = [
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "(11) 94002-1188",
+    value: whatsappDisplay,
   },
   {
     icon: Mail,
@@ -141,11 +141,11 @@ export function ContactBoard() {
                   <CheckCircle2 aria-hidden="true" className="size-6 shrink-0 text-accent" />
                   <div>
                     <p className="text-sm font-black uppercase tracking-[0.12em] text-foreground">
-                      Solicitação registrada
+                      Abrindo WhatsApp
                     </p>
                     <p className="mt-2 text-sm leading-6 text-muted">
-                      Mensagem local exibida para o protótipo. Na integração final,
-                      esse formulário pode enviar para CRM, e-mail ou WhatsApp.
+                      Seus dados foram organizados em uma mensagem para a equipe
+                      da Spartan Fit confirmar a visita.
                     </p>
                   </div>
                 </div>
@@ -156,7 +156,26 @@ export function ContactBoard() {
               className="mt-8 grid gap-5"
               onSubmit={(event) => {
                 event.preventDefault();
+                const formData = new FormData(event.currentTarget);
+                const name = String(formData.get("name") ?? "").trim();
+                const phone = String(formData.get("phone") ?? "").trim();
+                const classType = String(formData.get("classType") ?? "").trim();
+                const preferredTime = String(formData.get("preferredTime") ?? "").trim();
+                const goal = String(formData.get("goal") ?? "").trim();
+                const message = [
+                  "Olá, quero agendar uma aula experimental na Spartan Fit.",
+                  "",
+                  `Nome: ${name}`,
+                  `WhatsApp: ${phone}`,
+                  `Modalidade: ${classType}`,
+                  `Melhor horário: ${preferredTime}`,
+                  goal ? `Objetivo: ${goal}` : null,
+                ]
+                  .filter(Boolean)
+                  .join("\n");
+
                 setSent(true);
+                window.location.href = buildWhatsappUrl(message);
               }}
             >
               <div className="grid gap-5 sm:grid-cols-2">
@@ -249,16 +268,6 @@ export function ContactBoard() {
           </section>
         </div>
       </section>
-
-      <a
-        href="https://wa.me/5511940021188?text=Quero%20agendar%20uma%20aula%20experimental%20na%20Spartan%20Fit"
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-5 right-5 z-50 inline-flex size-14 items-center justify-center border border-accent bg-accent text-white shadow-hard transition duration-150 hover:-translate-y-1 hover:bg-accent-deep"
-        aria-label="Abrir conversa no WhatsApp"
-      >
-        <MessageCircle aria-hidden="true" className="size-6" strokeWidth={2.5} />
-      </a>
 
       <section className="border-t border-line bg-[#080808] py-10">
         <div className="site-shell flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
