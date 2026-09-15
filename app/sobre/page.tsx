@@ -74,27 +74,35 @@ const gallery = [
 
 const trainers = [
   {
-    name: "Caio Torres",
-    role: "Musculação e condicionamento",
-    credential: "CREF 142931-G/SP",
-    focus: "Acompanhamento de sala, ajustes de treino e evolução diária.",
+    name: "Mestre Jaime",
+    role: "Kickboxing e Boxe",
+    credential: "Faixa preta",
+    focus: "Treino técnico de golpes, defesa, deslocamento e condicionamento.",
     image: "/images/spartan-fit-5.jpeg",
     imagePosition: "object-center",
   },
   {
-    name: "Dani Rocha",
-    role: "Lutas",
-    credential: "Faixa preta / competição amadora",
-    focus: "Boxe, Kickboxing, Jiu-jitsu adulto e turmas kids.",
+    name: "Mestre Thiago Coyote",
+    role: "Jiu-jitsu adulto",
+    credential: "Faixa preta",
+    focus: "Base, posicionamento, defesa, rola controlado e evolução no tatame.",
     image: "/images/spartan-fit-6.jpeg",
     imagePosition: "object-center",
   },
   {
-    name: "Rafa Nunes",
-    role: "Pilates e aulas coletivas",
-    credential: "Fisiologia do exercício",
-    focus: "Pilates, dança, coordenação e condicionamento.",
+    name: "Mestre Anselmo e Mestre Caio",
+    role: "Jiu-jitsu Kids",
+    credential: "Faixas pretas",
+    focus: "Turmas kids com disciplina, coordenação, técnica e evolução por horário.",
     image: "/images/spartan-fit-2.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Rogério Escudeiro",
+    role: "Pilates, Fit Dance e Zumba",
+    credential: "Aulas coletivas",
+    focus: "Mobilidade, consciência corporal, dança, ritmo e condicionamento.",
+    image: "/images/spartan-fit-4.jpeg",
     imagePosition: "object-center",
   },
 ];
@@ -239,7 +247,7 @@ export default function SobrePage() {
             </CtaButton>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {trainers.map((trainer) => (
               <article
                 key={trainer.name}

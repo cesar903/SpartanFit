@@ -62,7 +62,7 @@ const classes: ClassItem[] = [
     category: "Dança",
     intensity: "Alta",
     duration: "60 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Rogério Escudeiro",
     capacity: 24,
     summary: "Aula ritmada para gasto calórico, coordenação e condicionamento.",
     details:
@@ -74,7 +74,7 @@ const classes: ClassItem[] = [
     category: "Pilates",
     intensity: "Baixa",
     duration: "60 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Rogério Escudeiro",
     capacity: 14,
     summary: "Controle corporal, mobilidade e fortalecimento com técnica.",
     details:
@@ -86,7 +86,7 @@ const classes: ClassItem[] = [
     category: "Lutas",
     intensity: "Alta",
     duration: "60 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Mestre Jaime",
     capacity: 20,
     summary: "Base, golpes, esquiva, saco e condicionamento.",
     details:
@@ -98,7 +98,7 @@ const classes: ClassItem[] = [
     category: "Lutas",
     intensity: "Alta",
     duration: "120 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Mestre Thiago Coyote",
     capacity: 24,
     summary: "Técnica, rola controlado, defesa e evolução no tatame.",
     details:
@@ -110,7 +110,7 @@ const classes: ClassItem[] = [
     category: "Lutas",
     intensity: "Alta",
     duration: "60 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Mestre Jaime",
     capacity: 18,
     summary: "Chutes, golpes, deslocamento e condicionamento intenso.",
     details:
@@ -122,7 +122,7 @@ const classes: ClassItem[] = [
     category: "Kids",
     intensity: "Média",
     duration: "60 min",
-    instructor: "Equipe Spartan Fit",
+    instructor: "Mestre Anselmo e Mestre Caio",
     capacity: 18,
     summary: "Turmas Kids 1, 2 e 3 com horários por idade e evolução técnica.",
     details:
